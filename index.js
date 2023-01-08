@@ -4,6 +4,7 @@ import inquirer from 'inquirer'
 import {Manager} from './lib/Manager.js'
 import {Engineer} from './lib/Engineer.js'
 import {Intern} from './lib/Intern.js'
+import generateHTML from './lib/generateHTML.js'
 
 let employees = []
 
@@ -122,7 +123,16 @@ const addIntern = () => {
 }
 
 const exportFile = () => {
-  console.log(employees)
+  // console.log(employees)
+  
+    fs.writeFile('./exports/index.html', generateHTML(employees), err => {
+      if (err) {
+        console.log(err);
+        return;
+    } else {
+        console.log("Your team profile has been successfully created!")
+    }    })
+  
   
 
 
