@@ -27,7 +27,7 @@ inquirer
       name: 'manEmail'
     },
     {
-      type: 'number',
+      type: 'input',
       message: 'Enter team manager office number', 
       name: 'manOffice'
     }
@@ -84,7 +84,6 @@ const addEngineer = () => {
     }
   ])
   .then((data) => {
-    // console.log(data)
     let engineer = new Engineer(data.engName, data.engId, data.engEmail, data.engGithub)
     employees.push(engineer)
     choicePrompt()
@@ -115,7 +114,6 @@ const addIntern = () => {
     }
   ])
   .then((data) => {
-    // console.log(data)
     let intern = new Intern (data.intName, data.intId, data.intEmail, data.intSchool)
     employees.push(intern)
     choicePrompt()
@@ -123,25 +121,14 @@ const addIntern = () => {
 }
 
 const exportFile = () => {
-  // console.log(employees)
-  
     fs.writeFile('./exports/index.html', generateHTML(employees), err => {
       if (err) {
         console.log(err);
         return;
     } else {
         console.log("Your team profile has been successfully created!")
-    }    })
-  
-  
-
-
-
-
-  // const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
-  // fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
-  //   err ? console.log(err) : console.log('Success!')
-  // );
+    }    
+  })
 }
 
 
